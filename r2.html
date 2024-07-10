@@ -1,0 +1,312 @@
+<h1>I Love JSX!</h1>
+///////////////////////////////////
+
+ <h1>React is {5 + 5} times better with JSX</h1>
+/////////////////////////////////////
+
+ <ul>
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Cherries</li>
+  </ul>
+/////////////////////////////////
+
+function Car() {
+  return <h2>I am a Car!</h2>;
+}
+/////////////////////////////////
+
+<Car />
+//////////////////////////////
+
+const firstName = "Mohamed";
+const friends = ["Mohamed"."Mohamed","Mohamed"];
+const age = <h1>25</h1>;
+const person = {
+  name: "Ahmed",
+  age: "25",
+  mail: "ah25@yahoo.com"
+}
+function sayHello() {
+  return "Hello Hello ";
+}
+{firstName}
+//////////////////////////////////////////////////////
+
+const elmStyle = {
+  backgroundColor: "red",
+  fontSize: "40px"
+};
+style = {{
+  backgroundColor: "red",
+  fontSize: "40px"
+}}
+////////////////// App1 ///////////////////////////////
+
+import './App.css';
+
+function Car() {
+  return <h2>I am a Car!</h2>;
+}
+
+function App() {
+  return (
+    <div>
+        <p>
+        <h1 className='mystyle'>React is {5 + 5} times better with JSX</h1>
+        <ul>
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Cherries</li>
+  </ul>
+        </p>
+         <Car />
+    </div>
+   
+  );
+}
+
+export default App;
+
+
+///////////////////////////// App1 finished ////////////////////////////
+// import './App.css';
+// import Car from './Car.js'
+
+// export default function App() {
+//   return (
+//     <div>
+//         <p>
+//         <h1 className='mystyle'>React is {5 + 5} times better with JSX</h1>
+//         <ul>
+//     <li>Apples</li>
+//     <li>Bananas</li>
+//     <li>Cherries</li>
+//   </ul>
+//         </p>
+//       <Car />
+//       <Car />
+//       <Car />
+//       <Car />
+//     </div>
+   
+//   );
+// }
+//////////////////// App2 ///////////////////////
+
+import './App.css';
+import Header from './Header';
+import Post from './Post';
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+  
+    </div>
+   
+  );
+}
+
+export default App;
+///////////////// App3 ///////////////////////
+
+import './App.css';
+import Header from './Header';
+import Post from './Post';
+
+
+function App() {
+  
+let person = {
+  name: "Ahmed",
+  age: 25,
+  mail: "aa@gmail.com"
+}
+  return (
+    <div>
+      <Header />
+      <h1> {person.name } </h1>
+  
+     
+    </div>
+   
+  );
+}
+
+export default App;
+
+
+// HTML 
+// HTML is the standard markup language for Web pages. 
+
+//   CSS
+// CSS is the language we use to style an HTML document.
+
+//   JavaScript
+// JavaScript.com is a resource for the JavaScript community.
+
+//   React
+// React is the library for web and native user interfaces.
+///////////////////// App4 ////////////////////////
+
+import Header from './Header1';
+import Post from './Post1';
+
+export default function App() {
+
+  return (
+    <div>
+      <Header /> 
+      <Post postTitle={'HTML'} postPragraph={'HTML is the standard markup language for Web pages.'} />
+      <Post postTitle={'CSS'} postPragraph={'CSS is the language we use to style an HTML document.'}/>
+      <Post postTitle={'JavaScript'} postPragraph={'JavaScript.com is a resource for the JavaScript community.'}/>
+      <Post postTitle={'React'} postPragraph={'React is the library for web and native user interfaces.'}/>
+    </div>
+   
+  );
+}
+
+///////////////////// App5 /////////////////////
+
+
+import Header from './Header1';
+import Post from './Post1';
+import {data} from './Data';
+
+export default function App() {
+  const dataShow = data.map(el => <Post postImage={el.postImage} postTitle={el.postTitle}
+    postPragraph={el.postPragraph} />)
+  return (
+    <div>
+      <Header /> 
+      {dataShow}
+    </div>
+   
+  );
+}
+
+///////////////////// App6 ////////////////////
+
+import Header from './Header1';
+import Post from './Post1';
+import {data} from './Data';
+///////////////////// key -- index //////////////////////
+export default function App() {
+  const dataShow = data.map((el, index) => (
+    <Post
+      key={index}
+      postImage={el.postImage}
+      postTitle={el.postTitle}
+      postPragraph={el.postPragraph}
+    />));
+  return (
+    <div>
+      <Header /> 
+      {dataShow}
+    </div>
+   
+  );
+}
+
+/////////////////// App7 //////////////////
+
+import React from 'react';
+
+export default function App() {
+  const [Mo, setMo] = React.useState("Mohamed");
+  console.log(Mo);
+  return (
+    <>
+      {/* <h1 onClick={() => setMo("Mohamed Salah")}>{Mo}</h1> */}
+      <h1>{Mo}</h1>
+      <button onClick={() => setMo("Mohamed Salah")}>{ Mo }</button>
+    </>
+  );
+}
+///////////////////////// App8 ///////////////////
+import { sculptureList } from './data2.js';
+
+export default function Gallery() {
+  let index = 0;
+
+  function handleClick() {
+    index = index + 1;
+    console.log(index);
+  }
+
+  let sculpture = sculptureList[index];
+  return (
+    <>
+      <button onClick={handleClick}>
+        Next
+      </button>
+      <h2>
+        <i>{sculpture.name} </i> 
+        by {sculpture.artist}
+      </h2>
+      <h3>  
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      <img 
+        src={sculpture.url} 
+        alt={sculpture.alt}
+      />
+      <p>
+        {sculpture.description}
+      </p>
+    </>
+  );
+}
+////////////////////// App8 finished /////////////////
+import { sculptureList } from './data2.js';
+import { useState } from 'react';
+
+export default function Gallery() {
+  const [index, setIndex] = useState(0);
+
+  function handleClick() {
+    setIndex(index + 1);
+     }
+
+  let sculpture = sculptureList[index];
+  return (
+    <>
+      <button style={{width:'200px', height:'50px', margin:'30px'}} onClick={handleClick}>
+        Next
+      </button>
+      <h2>
+        <i>{sculpture.name} </i> 
+        by {sculpture.artist}
+      </h2>
+      <h3>  
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      <img 
+        src={sculpture.url} 
+        alt={sculpture.alt}
+      />
+      <p>
+        {sculpture.description}
+      </p>
+    </>
+  );
+}
+/////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
